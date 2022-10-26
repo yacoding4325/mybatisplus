@@ -84,10 +84,208 @@ class MybatisPlusApplicationTests {
     /**
      * 根据多个id查询
      */
+//    @Test
+//    public void testSelectBatchIds() {
+//        List<User> users = userMapper.selectBatchIds(Arrays.asList(1, 2, 3));
+//        users.forEach(System.out::println);
+//    }
+
+    /**
+     * 简单的条件查询，通过map封装查询条件
+     */
+//    @Test
+//    public void testSelectById() {
+//        HashMap<String,Object> map = new HashMap<>();
+//        map.put("name", "bailongma");
+//        map.put("age", 33);
+//        List<User> users = userMapper.selectByMap(map);
+//        users.forEach(System.out::println);
+//    }
+
+    /**
+     * 分页查询
+     */
+//    @Test
+//    public void testSelectPage() {
+//        Page<User> page = new Page<>(2, 3);
+//        userMapper.selectPage(page, Wrappers.<User>lambdaQuery().ge(User::getAge, 10));
+//        List<User> records = page.getRecords();
+//        records.forEach(System.out::println);
+//        page.hasNext();
+//        page.hasPrevious();
+//    }
+//
+//    /**
+//     * 根据id删除
+//     */
+//    @Test
+//    public void testDeleteById() {
+//        int result = userMapper.deleteById(1449689775719071753L);
+//        System.out.println(result);
+//    }
+//
+//    /**
+//     * 根据主键id批量删除
+//     */
+//    @Test
+//    public void testDeleteByMap() {
+//        HashMap<String,Object> map = new HashMap<>();
+//        map.put("name","shasheng");
+//        int result = userMapper.deleteById(map);
+//        System.out.println(result);
+//    }
+//
+//    /**
+//     * 复杂查询 1、ge、gt、le、lt、isNull、isNotNull
+//     */
+//    @Test
+//    public void test1() {
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.ge("age",11).isNull("name");
+//        int result = userMapper.delete(queryWrapper);
+//        System.out.println(result);
+//    }
+//
+//    /**
+//     * 2、eq、ne
+//     */
+//    @Test
+//    public void test2(){
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("name","zhubajie");
+//        User user = userMapper.selectOne(queryWrapper);
+//        System.out.println(user);
+//    }
+//
+//    /**
+//     * 3、between、notBetween
+//     */
+//    @Test
+//    public void test3(){
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.between("age",20,30);
+//        List<User> users = userMapper.selectList(queryWrapper);
+//        System.out.println(users);
+//    }
+
+//    /**
+//     * 4、allEq
+//     */
+//    @Test
+//    public void test4(){
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        Map<String,Object> map = new HashMap<>();
+//        map.put("id",1L);
+//        map.put("name","Jack");
+//        map.put("age",30);
+//        queryWrapper.allEq(map);
+//        List<User> users = userMapper.selectList(queryWrapper);
+//        System.out.println(users);
+//    }
+//
+//    /**
+//     * 5、like、notLike、likeLeft、likeRight
+//     */
+//    @Test
+//    public void test5() {
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.like("name","a")
+//                .notLike("name","b");
+//        List<Map<String, Object>> maps = userMapper.selectMaps(queryWrapper);
+//        System.out.println(maps);
+//    }
+//
+//    /**
+//     * 6、in、notIn、inSql、notinSql、exists、notExists
+//     */
+//    @Test
+//    public void test6() {
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.inSql("id","select id from user where id<3");
+//        List<Object> objects = userMapper.selectObjs(queryWrapper);
+//        System.out.println(objects);
+//    }
+//
+//    /**
+//     * 7、or、and
+//     */
+//    @Test
+//    public void test7() {
+//        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
+//        User user = new User();
+//        user.setAge(50);
+//        user.setName("Rose");
+//
+//        userUpdateWrapper.like("name","a")
+//                .or()
+//                .between("age",20,25);
+//        int result = userMapper.update(user,userUpdateWrapper);
+//        System.out.println(result);
+//    }
+
+    /**
+     * 嵌套 or  嵌套and
+     */
+//    @Test
+//    public void test08() {
+//        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
+//        User user = new User();
+//        user.setAge(60);
+//        user.setName("Tom");
+//        userUpdateWrapper.like("name","b")
+//                .or(i -> i.eq("name","Jack").ne("age",20));
+//        //UPDATE user SET name=?, age=?, update_time=? WHERE (name LIKE ? OR (name = ? AND age <> ?))
+//        int result = userMapper.update(user,userUpdateWrapper);
+//        System.out.println(result);
+//    }
+
+    /**
+     * 9.orderBy,orderByDesc,orderByAsc
+     */
+//    @Test
+//    public void test09() {
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.orderBy(true,false,"id");
+//        List<User> users = userMapper.selectList(queryWrapper);
+//        System.out.println(users);
+//    }
+//
+//    /**
+//     * 10.last
+//     */
+//    @Test
+//    public void test10() {
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.last("limit 1");
+//        List<User> users = userMapper.selectList(queryWrapper);
+//        System.out.println(users);
+//    }
+
+    /**
+     * 11、指定要查询的列
+     */
+//    @Test
+//    public void test11() {
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.select("id","name","age");
+//        List<User> users = userMapper.selectList(queryWrapper);
+//        System.out.println(users);
+//    }
+
+    //12 set,setSql
     @Test
-    public void testSelectBatchIds() {
-        List<User> users = userMapper.selectBatchIds(Arrays.asList(1, 2, 3));
-        users.forEach(System.out::println);
+    public void test12() {
+        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
+        User user = new User();
+        user.setAge(50);
+        userUpdateWrapper.like("name","a")
+                .or()
+                .between("age",20,25)
+                .set("name","Mike")
+                .setSql(" email='123@qq.com'");
+        // UPDATE user SET age=?, update_time=?, name=?, email='123@qq.com' WHERE (name LIKE ? OR age BETWEEN ? AND ?)
+        int result = userMapper.update(user,userUpdateWrapper);
+        System.out.println(result);
     }
 
 }
